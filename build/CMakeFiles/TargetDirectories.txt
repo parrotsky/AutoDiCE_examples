@@ -1,0 +1,5 @@
+/home/sky/cloud/ncnn_examples/build/CMakeFiles/rebuild_cache.dir
+/home/sky/cloud/ncnn_examples/build/CMakeFiles/edit_cache.dir
+/home/sky/cloud/ncnn_examples/build/CMakeFiles/multinode_bench.dir
+/home/sky/cloud/ncnn_examples/build/CMakeFiles/multinode.dir
+/home/sky/cloud/ncnn_examples/build/CMakeFiles/hello.dir
