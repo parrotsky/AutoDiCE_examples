@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E rm -f
+RM = /usr/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/sky/cloud/ncnn_examples
+CMAKE_SOURCE_DIR = /home/sky/AutoDiCE_examples
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/sky/cloud/ncnn_examples/build
+CMAKE_BINARY_DIR = /home/sky/AutoDiCE_examples/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/sky/cloud/ncnn_examples/build
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -77,8 +77,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sky/cloud/ncnn_examples/build/CMakeFiles /home/sky/cloud/ncnn_examples/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sky/AutoDiCE_examples/build/CMakeFiles /home/sky/AutoDiCE_examples/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sky/cloud/ncnn_examples/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sky/AutoDiCE_examples/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named multinode_bench
-
-# Build rule for target.
-multinode_bench: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 multinode_bench
-.PHONY : multinode_bench
-
-# fast build rule for target.
-multinode_bench/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode_bench.dir/build.make CMakeFiles/multinode_bench.dir/build
-.PHONY : multinode_bench/fast
-
-#=============================================================================
 # Target rules for targets named multinode
 
 # Build rule for target.
@@ -142,90 +129,29 @@ multinode/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode.dir/build.make CMakeFiles/multinode.dir/build
 .PHONY : multinode/fast
 
-#=============================================================================
-# Target rules for targets named hello
-
-# Build rule for target.
-hello: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello
-.PHONY : hello
-
-# fast build rule for target.
-hello/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/build
-.PHONY : hello/fast
-
-hello.o: hello.cpp.o
-.PHONY : hello.o
+models/multinode.o: models/multinode.cpp.o
+.PHONY : models/multinode.o
 
 # target to build an object file
-hello.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.cpp.o
-.PHONY : hello.cpp.o
+models/multinode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode.dir/build.make CMakeFiles/multinode.dir/models/multinode.cpp.o
+.PHONY : models/multinode.cpp.o
 
-hello.i: hello.cpp.i
-.PHONY : hello.i
-
-# target to preprocess a source file
-hello.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.cpp.i
-.PHONY : hello.cpp.i
-
-hello.s: hello.cpp.s
-.PHONY : hello.s
-
-# target to generate assembly for a file
-hello.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/hello.cpp.s
-.PHONY : hello.cpp.s
-
-multinode.o: multinode.cpp.o
-.PHONY : multinode.o
-
-# target to build an object file
-multinode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode.dir/build.make CMakeFiles/multinode.dir/multinode.cpp.o
-.PHONY : multinode.cpp.o
-
-multinode.i: multinode.cpp.i
-.PHONY : multinode.i
+models/multinode.i: models/multinode.cpp.i
+.PHONY : models/multinode.i
 
 # target to preprocess a source file
-multinode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode.dir/build.make CMakeFiles/multinode.dir/multinode.cpp.i
-.PHONY : multinode.cpp.i
+models/multinode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode.dir/build.make CMakeFiles/multinode.dir/models/multinode.cpp.i
+.PHONY : models/multinode.cpp.i
 
-multinode.s: multinode.cpp.s
-.PHONY : multinode.s
-
-# target to generate assembly for a file
-multinode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode.dir/build.make CMakeFiles/multinode.dir/multinode.cpp.s
-.PHONY : multinode.cpp.s
-
-multinode_bench.o: multinode_bench.cpp.o
-.PHONY : multinode_bench.o
-
-# target to build an object file
-multinode_bench.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode_bench.dir/build.make CMakeFiles/multinode_bench.dir/multinode_bench.cpp.o
-.PHONY : multinode_bench.cpp.o
-
-multinode_bench.i: multinode_bench.cpp.i
-.PHONY : multinode_bench.i
-
-# target to preprocess a source file
-multinode_bench.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode_bench.dir/build.make CMakeFiles/multinode_bench.dir/multinode_bench.cpp.i
-.PHONY : multinode_bench.cpp.i
-
-multinode_bench.s: multinode_bench.cpp.s
-.PHONY : multinode_bench.s
+models/multinode.s: models/multinode.cpp.s
+.PHONY : models/multinode.s
 
 # target to generate assembly for a file
-multinode_bench.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode_bench.dir/build.make CMakeFiles/multinode_bench.dir/multinode_bench.cpp.s
-.PHONY : multinode_bench.cpp.s
+models/multinode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/multinode.dir/build.make CMakeFiles/multinode.dir/models/multinode.cpp.s
+.PHONY : models/multinode.cpp.s
 
 # Help Target
 help:
@@ -235,18 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... hello"
 	@echo "... multinode"
-	@echo "... multinode_bench"
-	@echo "... hello.o"
-	@echo "... hello.i"
-	@echo "... hello.s"
-	@echo "... multinode.o"
-	@echo "... multinode.i"
-	@echo "... multinode.s"
-	@echo "... multinode_bench.o"
-	@echo "... multinode_bench.i"
-	@echo "... multinode_bench.s"
+	@echo "... models/multinode.o"
+	@echo "... models/multinode.i"
+	@echo "... models/multinode.s"
 .PHONY : help
 
 

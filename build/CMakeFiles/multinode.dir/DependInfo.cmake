@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/sky/cloud/ncnn_examples/multinode.cpp" "CMakeFiles/multinode.dir/multinode.cpp.o" "gcc" "CMakeFiles/multinode.dir/multinode.cpp.o.d"
+  "/home/sky/AutoDiCE_examples/models/multinode.cpp" "CMakeFiles/multinode.dir/models/multinode.cpp.o" "gcc" "CMakeFiles/multinode.dir/models/multinode.cpp.o.d"
   )
 
 # Targets to which this target links.

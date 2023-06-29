@@ -4,7 +4,7 @@
 # compile CXX with mpic++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sky/cloud/ncnn_examples/../src -I/home/sky/cloud/ncnn_examples/build/../src -isystem /usr/include/opencv4 -isystem /home/sky/cloud/arm_ncnn/include/ncnn -isystem /usr/lib/aarch64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/aarch64-linux-gnu/openmpi/include
+CXX_INCLUDES = -I/home/sky/AutoDiCE_examples/./include -I/home/sky/AutoDiCE_examples/../src -I/home/sky/AutoDiCE_examples/build/../src -isystem /usr/local/include/opencv4 -isystem /usr/lib/x86_64-linux-gnu/openmpi/include/openmpi -isystem /usr/lib/x86_64-linux-gnu/openmpi/include -isystem /home/sky/AutoDiCE_examples/ncnn/include/ncnn
 
-CXX_FLAGS = -fopenmp -fexceptions -fPIE -fno-rtti -fno-exceptions -fopenmp -pthread -std=gnu++11
+CXX_FLAGS = -fopenmp -fexceptions -g -fPIE -pthread -fopenmp -std=gnu++11
 

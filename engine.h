@@ -1,8 +1,6 @@
 #pragma once
 
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-
+#include <opencv2/opencv.hpp>
 
 #include "NvInfer.h"
 #include "buffers.h"
@@ -14,7 +12,7 @@ struct Options {
     // Batch sizes to optimize for.
     std::vector<int32_t> optBatchSizes;
     // Maximum allowable batch size
-    int32_t maxBatchSize = 1;
+    int32_t maxBatchSize = 16;
     // Max allowable GPU memory to be used for model conversion, in bytes.
     // Applications should allow the engine builder as much workspace as they can afford;
     // at runtime, the SDK allocates no more than this and typically less.

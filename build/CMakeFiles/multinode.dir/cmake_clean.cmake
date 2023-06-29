@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/multinode.dir/multinode.cpp.o"
-  "CMakeFiles/multinode.dir/multinode.cpp.o.d"
+  "CMakeFiles/multinode.dir/models/multinode.cpp.o"
+  "CMakeFiles/multinode.dir/models/multinode.cpp.o.d"
   "multinode"
   "multinode.pdb"
 )
