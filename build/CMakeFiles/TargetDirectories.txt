@@ -1,3 +1,0 @@
-/home/sky/AutoDiCE_examples/build/CMakeFiles/rebuild_cache.dir
-/home/sky/AutoDiCE_examples/build/CMakeFiles/edit_cache.dir
-/home/sky/AutoDiCE_examples/build/CMakeFiles/multinode.dir
