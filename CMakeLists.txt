@@ -18,6 +18,8 @@ option(WITH_ZMQ "zeromq library support" OFF)
 option(WITH_MPI "mpi library support" ON)
 option(WITH_NCNN "ncnn library support" ON)
 option(WITH_TENSORRT "ncnn library support" OFF)
+# add the 'tools' subdirectory to the build
+add_subdirectory(tools)
 
 if(WITH_ZMQ)
     find_package(ZeroMQ REQUIRED)
@@ -140,3 +142,18 @@ else()
     ncnn_add_example(multinode)
     #ncnn_add_example(multinode_bench)
 endif()
+
+# first, get a list of all .onnx files in the current directory
+file(GLOB ONNX_FILES "./models/*.onnx")
+
+# then, for each .onnx file, create a custom command to run onnx2ncnn on it
+foreach(ONNX_FILE ${ONNX_FILES})
+    get_filename_component(FILENAME ${ONNX_FILE} NAME_WE) # Extract the file name without extension
+    add_custom_target(
+        run_onnx2ncnn_${FILENAME} ALL # create a unique target for each file
+        COMMAND ./tools/onnx2ncnn ${ONNX_FILE} # run the command
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Running onnx2ncnn on ${ONNX_FILE}..."
+    )
+endforeach()
+
