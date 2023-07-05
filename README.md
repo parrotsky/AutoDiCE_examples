@@ -49,17 +49,25 @@ git clone -b hybridpartition https://github.com/parrotsky/AutoDiCE.git
 ```
 
 ## 3. How to use the Partition Package to generate submodels and cpp files. 
+### **Quick Start**.
 
-Now we can define the Mapping Specification. We want to use two cpu cores in this demo to simulate a multi-node scenario. For this example, the hostname of machine is "lenovo". We define the two keys in the [mapping.json](https://github.com/parrotsky/AutoDiCE/blob/main/tools/distributed/vertical/mapping.json) file as: "lenovo_cpu0"  and "lenovo_cpu1".
+```bash
+python3 01.alexnet.interface.py
+# this is for the interface to parse models and platform/mapping specification files.
+python3 02.alexnet.frontend.py
+# this is for model splitting and code generations.
+```
+
+Now we can define the Mapping Specification or partitioning the models manually . We want to use two cpu cores in this demo to simulate a multi-node scenario. For this example, the hostname of machine is "lenovo". We define the two keys in the [mapping.json](https://github.com/parrotsky/AutoDiCE/blob/main/tools/distributed/vertical/mapping.json) file as: "lenovo_cpu0"  and "lenovo_cpu1".
 Important: Modify the mapping.json file according to the hostname of your machine. Make sure to replace both occurrences of "lenovo" with the output of the `hostname` command. Then we can generate two submodels according to our mapping specification file:
 
 
 ```python
 ### Prepare AlexNet Model and Computing nodes
 ### mapping.json Template (AlexNet):
-{"lenovo_cpu0": ["conv1_1", "conv1_2", "norm1_1", "pool1_1", "conv2_1", "conv2_2", "norm2_1", "pool2_1", "conv3_1", "conv3_2", "conv4_1", "conv4_2", "conv5_1", "conv5_2", "pool5_1", "OC2_DUMMY_0", "fc6_1", "fc6_2"], "lenovo_cpu1": ["fc6_3", "fc7_1", "fc7_2", "fc7_3", "fc8_1", "prob_1"]}
+# {"lenovo_cpu0": ["conv1_1", "conv1_2", "norm1_1", "pool1_1", "conv2_1", "conv2_2", "norm2_1", "pool2_1", "conv3_1", "conv3_2", "conv4_1", "conv4_2", "conv5_1", "conv5_2", "pool5_1", "OC2_DUMMY_0", "fc6_1", "fc6_2"], "lenovo_cpu1": ["fc6_3", "fc7_1", "fc7_2", "fc7_3", "fc8_1", "prob_1"]}
 
-### Quick Start.
+### Example Code for Code Generation...
 import os,sys
  
 from partition.interface import *
@@ -77,7 +85,7 @@ if __name__ == '__main__':
     # https://github.com/onnx/models/blob/main/vision/classification/alexnet/model/bvlcalexnet-9.onnx
     input_model = format_onnx(origin_model)
     model =  onnx.load(input_model)
-    # resourceid = { 1:'lenovo_cpu0', 2:'lenovo_cpu1'}
+    # resourceid = { 1:'lenovo_cpu0', 2:'lenovo_cpu1'}  ### Given manually.
     platforms = ['lenovo']
 
     ### How the layers in alexnet model distribute over two computing nodes???
@@ -118,10 +126,11 @@ Second, we compile with ncnn library and vulkan (if needed) to obtain our binary
 
 Third, Enjoy
 ```bash
+cd models/ && cmake .. && make -j2 && cp ../dog.jpg .
 mpirun -rf rankfile ./multinode dog.jpg
 ```
 
-### 4.1 Building the `onnx2ncnn` Tool
+### 4.1 Building the `onnx2ncnn` Tool (Optional)
 
 To convert ONNX models to NCNN binary and parameter files, you need to build the `onnx2ncnn` tool. Follow these steps:
 
@@ -133,7 +142,7 @@ Navigate to the `tools` directory in the NCNN source tree:
 
 The `onnx2ncnn` tool should now be compiled and ready for use.
 
-### 4.2 Converting ONNX Models to NCNN Format; Compile!!!
+### 4.2 Converting ONNX Models to NCNN Format manually; Compile!!!
 
 After building the `onnx2ncnn` tool, you can use it to convert ONNX models to NCNN's binary and parameter files. Follow these steps:
 

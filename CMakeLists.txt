@@ -143,6 +143,8 @@ else()
     #ncnn_add_example(multinode_bench)
 endif()
 
+#### The below involves with onnx operations.
+#### You can comment below cmake commands if you just want to compile the code.
 # first, get a list of all .onnx files in the current directory
 file(GLOB ONNX_FILES "./models/*.onnx")
 
