@@ -126,6 +126,7 @@ Second, we compile with ncnn library and vulkan (if needed) to obtain our binary
 
 Third, Enjoy
 ```bash
+sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ## (optional)
 cd models/ && cmake .. && make -j2 && cp ../dog.jpg .
 mpirun -rf rankfile ./multinode dog.jpg
 ```
