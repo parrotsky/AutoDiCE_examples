@@ -25,7 +25,7 @@ if __name__ == '__main__':
         print("The output directory %s is created!" % (output_dirs))
 
     # Download the alexnet Model from onnx repo...
-    url = 'https://github.com/onnx/models/blob/main/vision/classification/alexnet/model/bvlcalexnet-9.onnx'
+    url = 'https://github.com/onnx/models/raw/main/vision/classification/alexnet/model/bvlcalexnet-9.onnx'
     origin_model = "bvlcalexnet-9.onnx"
     download_model_if_not_exists(url, origin_model)
     ### Can be downloaded from:
