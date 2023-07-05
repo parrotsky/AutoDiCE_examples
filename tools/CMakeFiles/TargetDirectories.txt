@@ -1,3 +1,0 @@
-/home/sky/code/AutoDiCE_examples/tools/CMakeFiles/rebuild_cache.dir
-/home/sky/code/AutoDiCE_examples/tools/CMakeFiles/edit_cache.dir
-/home/sky/code/AutoDiCE_examples/tools/CMakeFiles/onnx2ncnn.dir
