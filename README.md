@@ -127,7 +127,7 @@ Second, we compile with ncnn library and vulkan (if needed) to obtain our binary
 Third, Enjoy
 ```bash
 sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ## (optional)
-cd models/ && cmake .. && make -j2 && cp ../dog.jpg .
+cd models/ && cmake .. && make -j2 && cp ../dog.jpg . && cp ../synset_words.txt .
 mpirun -rf rankfile ./multinode dog.jpg
 ```
 
@@ -174,7 +174,7 @@ After building the `onnx2ncnn` tool, you can use it to convert ONNX models to NC
 
 4. Now we can finally use the `mpirun` command to run the multi-node inference application.
 ```    
-    (shell) $ cd models/ && mpirun -rf rankfile ./multinode dog.jpg
+    (shell) $ cd models/ && cp ../dog.jpg . && cp ../synset_words.txt . && mpirun -rf rankfile ./multinode dog.jpg
     215 = 0.593469
     207 = 0.125113
     213 = 0.102682
