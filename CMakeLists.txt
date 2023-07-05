@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.5)
 set(CMAKE_CXX_FLAGS "-fopenmp -fexceptions")
 set(CMAKE_C_FLAGS "-fopenmp -fexceptions")
 set(CMAKE_BUILD_TYPE Debug)
