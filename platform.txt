@@ -1,0 +1,2 @@
+nx01, arm, slots=0-5, gpu=NVIDIAVolta (CUDA)
+nx02, arm, slots=0-5, gpu=NVIDIAVolta (CUDA)

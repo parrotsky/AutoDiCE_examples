@@ -1,3 +1,0 @@
-/home/sky/autodice_examples/models/CMakeFiles/rebuild_cache.dir
-/home/sky/autodice_examples/models/CMakeFiles/edit_cache.dir
-/home/sky/autodice_examples/models/CMakeFiles/multinode.dir
