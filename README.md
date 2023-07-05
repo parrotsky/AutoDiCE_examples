@@ -138,7 +138,8 @@ To convert ONNX models to NCNN binary and parameter files, you need to build the
 Navigate to the `tools` directory in the NCNN source tree:
 
     ```bash
-    cd tools && cmake . && make
+    cd tools && protoc onnx.proto --cpp_out=.
+    cmake . && make
     ```
 
 The `onnx2ncnn` tool should now be compiled and ready for use.
@@ -181,7 +182,19 @@ After building the `onnx2ncnn` tool, you can use it to convert ONNX models to NC
     golden retriever 
     Irish setter, red setter 
 ```    
-    
+
+# FAQ
+## Protobuf, onnx2ncnn
+```bash
+fatal error: google/protobuf/port_def.inc: No such file or directory
+   10 | #include <google/protobuf/port_def.inc>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[2]: *** [CMakeFiles/onnx2ncnn.dir/build.make:84: CMakeFiles/onnx2ncnn.dir/onnx2ncnn.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/onnx2ncnn.dir/all] Error 2
+You can regenerate the header files again with the "protoc onnx.proto --cpp_out=." in your terminal.
+
+```
 For more information we refer to the jupyter notebook [alexnet partition](https://github.com/parrotsky/AutoDiCE/blob/main/tools/distributed/vertical/vertical%20partition%20tutorial.ipynb). It shows how to generate multi-node inference c++ code file and corresponding sub-models in details.
 
 [packaging guide]: https://packaging.python.
