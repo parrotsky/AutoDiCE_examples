@@ -33,12 +33,14 @@ Next, download the NCNN package from the official NCNN [releases][ncnn] accordin
 ...
 
 ```bash
+git clone https://github.com/parrotsky/AutoDiCE_examples.git
+cd AutoDiCE_examples
 tar -xzf ncnn.tar.gz -C .  ### To current source directory (AutoDiCE_examples directory.)
 ```
 
 Finally, download the Vulkan SDK from the [LunarG website][vulkan]. 
 
-### Additional Notes
+### Additional Notes (Optional)
 
 If you need to apply horizontal partitioning, please download and compile the `autodice` branch named `hybridpartition`. 
 
@@ -63,12 +65,13 @@ Important: Modify the mapping.json file according to the hostname of your machin
 
 
 
-### Prepare AlexNet Model and Computing nodes
+### Prepare AlexNet Model and Deploy over two Computing nodes
 #### 1. mapping.json Template (AlexNet):
 ```
-# For Single Device multiple CPU cores
+### By changing the keys in the mapping.json.
+# For a Single Device multiple CPU cores
   {"lenovo_cpu0": ["conv1_1", "conv1_2", "norm1_1", "pool1_1", "conv2_1", "conv2_2", "norm2_1", "pool2_1", "conv3_1", "conv3_2", "conv4_1", "conv4_2", "conv5_1", "conv5_2", "pool5_1", "OC2_DUMMY_0", "fc6_1", "fc6_2"], "lenovo_cpu1": ["fc6_3", "fc7_1", "fc7_2", "fc7_3", "fc8_1", "prob_1"]}
-# For Single Device CPU (all cores) + GPU
+# For a Single Device CPU (all cores) + GPU
   {"lenovo_gpu": ["conv1_1", "conv1_2", "norm1_1", "pool1_1", "conv2_1", "conv2_2", "norm2_1", "pool2_1", "conv3_1", "conv3_2", "conv4_1", "conv4_2", "conv5_1", "conv5_2", "pool5_1", "OC2_DUMMY_0", "fc6_1", "fc6_2"], "lenovo_cpu012345": ["fc6_3", "fc7_1", "fc7_2", "fc7_3", "fc8_1", "prob_1"]}
 # For Two Devices: One CPU (all cores) + The Other GPU
   {"lenovo0_gpu": ["conv1_1", "conv1_2", "norm1_1", "pool1_1", "conv2_1", "conv2_2", "norm2_1", "pool2_1", "conv3_1", "conv3_2", "conv4_1", "conv4_2", "conv5_1", "conv5_2", "pool5_1", "OC2_DUMMY_0", "fc6_1", "fc6_2"], "lenovo1_cpu012345": ["fc6_3", "fc7_1", "fc7_2", "fc7_3", "fc8_1", "prob_1"]}
