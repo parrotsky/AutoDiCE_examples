@@ -25,10 +25,12 @@ Please note: we only test for opset version-9 onnx models.
 
 First, you will need to install the `autodice` python package. You can do this with pip:
 
-```bash
-pip3 install autodice
-sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ### (optional)
+```bash 
+sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ### (Required For runtime Only on Computing node )
+```
 
+```bash
+pip3 install autodice    
 ```
 Next, download the NCNN package from the official NCNN [releases][ncnn] according to your platform and requirements...
 
