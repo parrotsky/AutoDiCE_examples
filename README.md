@@ -25,10 +25,6 @@ Please note: we only test for opset version-9 onnx models.
 
 First, you will need to install the `autodice` python package. You can do this with pip:
 
-```bash 
-sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ### (Required For runtime Only on Computing node )
-```
-
 ```bash
 pip3 install autodice    
 ```
@@ -42,7 +38,11 @@ cd AutoDiCE_examples
 tar -xzf ncnn.tar.gz -C .  ### To current source directory (AutoDiCE_examples directory.)
 ```
 
-Finally, download the Vulkan SDK from the [LunarG website][vulkan]. 
+Finally, download the Vulkan SDK from the [LunarG website][vulkan]. For all computing node/device, you have to install required packages for compilation.
+
+```bash 
+sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ### (Required For runtime Only on Computing node )
+```
 
 ### Additional Notes (Optional)
 
