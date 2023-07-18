@@ -4,7 +4,7 @@
 
 This repository provides instructions for installation, model generation, compilation, and conversion of models into NCNN param and bin files.
 ## 1. Preparation: 
-### 1.1 Check MPI installation & Cluster Env (Hello world for mpirun)
+### 1.1 Check MPI installation & Cluster Env (Hello world for mpirun, Important)
 Before running into multi-node or single-node-multi-threads programs, we need to check if our MPI environment is installed correctly. 
 Then compile and run it with the command:
 
@@ -27,6 +27,8 @@ First, you will need to install the `autodice` python package. You can do this w
 
 ```bash
 pip3 install autodice
+sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ### (optional)
+
 ```
 Next, download the NCNN package from the official NCNN [releases][ncnn] according to your platform and requirements...
 
@@ -137,7 +139,6 @@ Second, we compile with ncnn library and vulkan (if needed) to obtain our binary
 
 Third, Enjoy
 ```bash
-sudo apt install libprotobuf-dev protobuf-compiler libvulkan-dev vulkan-utils libopencv-dev  ## (optional)
 cd models/ && cmake .. && make -j2 && cp ../dog.jpg . && cp ../synset_words.txt .
 mpirun -rf rankfile ./multinode dog.jpg
 ```
