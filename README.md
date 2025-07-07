@@ -19,7 +19,8 @@ In this tutorial, you need to download [AlexNet](https://github.com/onnx/models/
 You can find more [onnx models](https://github.com/onnx/models) and download them according to your preferences.
 Please note: we only test for opset version-9 onnx models.
 
-
+To -UPDATE:
+2025-07: plan to upgrade onnx partition tools for distributed inference.
 
 ## 2. Installation
 
