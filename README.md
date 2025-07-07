@@ -1,4 +1,7 @@
 # AutoDiCE Project.
+This repo is used to partition onnx models into several sub models (onnx format). 
+
+Also, we integrate ncnn support to run these small models onto several platforms which enables the original huge onnx models collaboratively running.
 [The source for this AutoDiCE project is available here][src].
 ![Python Logo](https://www.python.org/static/community_logos/python-logo.png "Sample inline image")
 
