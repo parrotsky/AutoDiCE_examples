@@ -68,6 +68,8 @@ python3 02.alexnet.frontend.py
 # this is for model splitting and code generations.
 ```
 
+How to get partitioned ONNX models ???? 
+
 Now we can define the Mapping Specification or partitioning the models manually . We want to use two cpu cores in this demo to simulate a multi-node scenario. For this example, the hostname of machine is "lenovo". We define the two keys in the [mapping.json](https://github.com/parrotsky/AutoDiCE/blob/main/tools/distributed/vertical/mapping.json) file as: "lenovo_cpu0"  and "lenovo_cpu1".
 Important: Modify the mapping.json file according to the hostname of your machine. Make sure to replace both occurrences of "lenovo" with the output of the `hostname` command. Then we can generate two submodels according to our mapping specification file:
 
